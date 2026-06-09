@@ -10,7 +10,7 @@ LabelGuard uses Claude Vision to automatically extract and validate required fie
 
 TTB agents currently process approximately **150,000 alcohol label submissions per year** using a manual checklist process. Each label must be reviewed for a precise set of required fields, and the government warning statement must appear in a specific, regulated format. This manual workflow is time-intensive and prone to inconsistency.
 
-LabelGuard replaces that process with a drag-and-drop interface backed by Claude Vision AI. Agents upload a label image, and the system returns a structured extraction of all required fields plus a PASS / WARNING / FAIL compliance verdict — targeting a **5-second response time** end to end.
+LabelGuard replaces that process with a drag-and-drop interface backed by Claude Vision AI. Agents upload a label image, and the system returns a structured extraction of all required fields plus a PASS / WARNING / FAIL compliance verdict, targeting a **5-second response time** end to end.
 
 ---
 
