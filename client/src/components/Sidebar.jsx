@@ -31,6 +31,7 @@ function Sidebar({ activePage, onNavigate }) {
         {NAV.map(({ id, label, Icon }) => (
           <button
             key={id}
+            type="button"
             className={`nav-item ${activePage === id ? 'nav-item-active' : ''}`}
             onClick={() => onNavigate(id)}
           >
