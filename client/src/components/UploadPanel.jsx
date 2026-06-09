@@ -28,7 +28,8 @@ function UploadPanel({ setResult, setLoading, setError, loading }) {
       const mediaType = meta.match(/:(.*?);/)[1]
 
       try {
-        const response = await axios.post('http://localhost:3001/api/analyze', {
+        const apiBase = import.meta.env.VITE_API_URL ?? 'http://localhost:3001'
+        const response = await axios.post(`${apiBase}/api/analyze`, {
           imageBase64: base64,
           mediaType
         })
