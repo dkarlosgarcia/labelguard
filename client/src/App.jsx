@@ -1,43 +1,44 @@
 import { useState } from 'react'
-import UploadPanel from './components/UploadPanel'
-import ResultPanel from './components/ResultPanel'
+import Sidebar     from './components/Sidebar'
+import Dashboard   from './pages/Dashboard'
+import ScanLabel   from './pages/ScanLabel'
+import BatchUpload from './pages/BatchUpload'
+import History     from './pages/History'
+import Reports     from './pages/Reports'
+import Settings    from './pages/Settings'
 import './index.css'
 
+const PAGES = {
+  dashboard: { title: 'Dashboard',                    subtitle: 'Overview of recent compliance activity.',                                          Component: Dashboard   },
+  scan:      { title: 'Label Compliance Verification', subtitle: 'Upload an alcohol label image to extract and verify required TTB information.',     Component: ScanLabel   },
+  batch:     { title: 'Batch Upload',                  subtitle: 'Process multiple label images sequentially and review results in a single view.',   Component: BatchUpload },
+  history:   { title: 'Scan History',                  subtitle: 'Last 20 label scans stored locally on this device.',                               Component: History     },
+  reports:   { title: 'Reports',                       subtitle: 'Compliance reporting and analytics.',                                               Component: Reports     },
+  settings:  { title: 'Settings',                      subtitle: 'Configure LabelGuard for your workflow.',                                           Component: Settings    },
+}
+
 function App() {
-  const [result, setResult] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const [activePage, setActivePage] = useState('scan')
+  const { title, subtitle, Component } = PAGES[activePage]
 
   return (
     <div className="app">
-      <header className="header">
-        <div className="header-left">
-          <img src="/ocg-shield.png" alt="OCG Shield" className="shield-logo" />
-          <div className="header-text">
-            <span className="brand-label">Label<span className="brand-guard">Guard</span></span>
-            <span className="brand-sub">TTB Alcohol Label Compliance Verification</span>
-          </div>
+      <Sidebar activePage={activePage} onNavigate={setActivePage} />
+
+      <div className="main-area">
+        <div className="topbar">
+          <h1 className="topbar-title">{title}</h1>
+          <p className="topbar-subtitle">{subtitle}</p>
         </div>
-      </header>
 
-      <main className="main">
-        <h1 className="page-title">Label Compliance Verification</h1>
-        <p className="page-sub">Upload an alcohol label image to extract and verify required TTB information.</p>
-
-        <div className="panels">
-          <UploadPanel
-            setResult={setResult}
-            setLoading={setLoading}
-            setError={setError}
-            loading={loading}
-          />
-          <ResultPanel result={result} loading={loading} error={error} />
+        <div className="content">
+          <Component />
         </div>
-      </main>
 
-      <footer className="footer">
-        <span>⊕ Powered by <strong>Overwatch Cyber Group</strong></span>
-      </footer>
+        <footer className="footer">
+          Powered by <strong>Overwatch Cyber Group</strong>
+        </footer>
+      </div>
     </div>
   )
 }
