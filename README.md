@@ -2,7 +2,7 @@
 
 **AI-powered TTB alcohol label compliance verification**
 
-LabelGuard uses Claude Vision to automatically extract and validate required fields from alcohol beverage label images against Alcohol and Tobacco Tax and Trade Bureau (TTB) regulations — returning a structured compliance verdict in under 5 seconds.
+LabelGuard uses Claude Vision to automatically extract and validate required fields from alcohol beverage label images against Alcohol and Tobacco Tax and Trade Bureau (TTB) regulations, returning a structured compliance verdict in under 5 seconds.
 
 ---
 
